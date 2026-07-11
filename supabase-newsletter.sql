@@ -4,9 +4,12 @@ create table if not exists public.entire_newsletter_leads (
   name text,
   recommended_product text,
   quiz_answers jsonb not null default '{}'::jsonb,
+  campaign_data jsonb not null default '{}'::jsonb,
   consent boolean not null default false,
   source text not null default 'landing_entire_selector',
   page_path text,
+  referrer text,
+  landing_url text,
   user_agent text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
@@ -22,6 +25,11 @@ create index if not exists entire_newsletter_leads_created_at_idx
 
 create index if not exists entire_newsletter_leads_recommended_product_idx
   on public.entire_newsletter_leads (recommended_product);
+
+alter table public.entire_newsletter_leads
+  add column if not exists campaign_data jsonb not null default '{}'::jsonb,
+  add column if not exists referrer text,
+  add column if not exists landing_url text;
 
 alter table public.entire_newsletter_leads enable row level security;
 
@@ -54,3 +62,40 @@ create trigger set_entire_newsletter_updated_at
   before update on public.entire_newsletter_leads
   for each row
   execute function public.set_entire_newsletter_updated_at();
+
+create table if not exists public.entire_landing_events (
+  id uuid primary key default gen_random_uuid(),
+  event_name text not null,
+  recommended_product text,
+  campaign_data jsonb not null default '{}'::jsonb,
+  metadata jsonb not null default '{}'::jsonb,
+  page_path text,
+  referrer text,
+  user_agent text,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists entire_landing_events_created_at_idx
+  on public.entire_landing_events (created_at desc);
+
+create index if not exists entire_landing_events_event_name_idx
+  on public.entire_landing_events (event_name);
+
+create index if not exists entire_landing_events_recommended_product_idx
+  on public.entire_landing_events (recommended_product);
+
+alter table public.entire_landing_events enable row level security;
+
+drop policy if exists "Allow public landing event insert" on public.entire_landing_events;
+create policy "Allow public landing event insert"
+  on public.entire_landing_events
+  for insert
+  to anon
+  with check (event_name <> '');
+
+drop policy if exists "No public landing event reads" on public.entire_landing_events;
+create policy "No public landing event reads"
+  on public.entire_landing_events
+  for select
+  to anon
+  using (false);

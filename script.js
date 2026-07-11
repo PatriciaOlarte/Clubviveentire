@@ -2,6 +2,8 @@ const SUPABASE_URL = "https://njaqzgmdevbjrultlqci.supabase.co";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qYXF6Z21kZXZianJ1bHRscWNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3MTczMDAsImV4cCI6MjA5OTI5MzMwMH0.TArE1M9rYdJDRWtOfJAmWyW_6TKC_9kcjPO08x6_gBc";
 const SUPABASE_LEADS_TABLE = "entire_newsletter_leads";
+const SUPABASE_EVENTS_TABLE = "entire_landing_events";
+const CAMPAIGN_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"];
 
 const products = {
   full: {
@@ -65,6 +67,66 @@ const newsletterStatus = landing.querySelector("#newsletter-status");
 const leadName = landing.querySelector("#lead-name");
 const leadEmail = landing.querySelector("#lead-email");
 const leadConsent = landing.querySelector("#lead-consent");
+let quizStarted = false;
+let lastRecommendedProduct = "";
+
+window.dataLayer = window.dataLayer || [];
+
+function getCampaignData() {
+  const params = new URLSearchParams(window.location.search);
+  const currentData = {};
+
+  CAMPAIGN_KEYS.forEach((key) => {
+    const value = params.get(key);
+    if (value) currentData[key] = value;
+  });
+
+  if (Object.keys(currentData).length) {
+    localStorage.setItem("entire_campaign_data", JSON.stringify(currentData));
+    return currentData;
+  }
+
+  try {
+    return JSON.parse(localStorage.getItem("entire_campaign_data") || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function trackEvent(eventName, metadata = {}) {
+  const product = chooseProduct();
+  const eventPayload = {
+    event: eventName,
+    product: product.name,
+    page_path: window.location.pathname + window.location.search + window.location.hash,
+    campaign_data: getCampaignData(),
+    metadata
+  };
+
+  window.dataLayer.push(eventPayload);
+
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return;
+
+  fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_EVENTS_TABLE}`, {
+    method: "POST",
+    keepalive: true,
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal"
+    },
+    body: JSON.stringify({
+      event_name: eventName,
+      recommended_product: product.name,
+      campaign_data: eventPayload.campaign_data,
+      metadata,
+      page_path: eventPayload.page_path,
+      referrer: document.referrer || null,
+      user_agent: navigator.userAgent
+    })
+  }).catch(() => {});
+}
 
 function chooseProduct() {
   const [age, goal, activity, condition] = controls.map((control) => control.value);
@@ -78,6 +140,8 @@ function chooseProduct() {
 
 function renderRecommendation() {
   const product = chooseProduct();
+  const previousProduct = lastRecommendedProduct;
+  lastRecommendedProduct = product.name;
   resultName.textContent = product.name;
   resultCopy.textContent = product.copy;
   resultLink.href = product.url;
@@ -91,11 +155,27 @@ function renderRecommendation() {
       return item;
     })
   );
+
+  if (previousProduct && previousProduct !== product.name) {
+    trackEvent("quiz_result_changed", {
+      previous_product: previousProduct,
+      answers: getQuizAnswers()
+    });
+  }
 }
 
 if (controls.every(Boolean) && resultName && resultCopy && resultList && resultLink) {
-  controls.forEach((control) => control.addEventListener("change", renderRecommendation));
+  controls.forEach((control) =>
+    control.addEventListener("change", () => {
+      if (!quizStarted) {
+        quizStarted = true;
+        trackEvent("quiz_started", { answers: getQuizAnswers() });
+      }
+      renderRecommendation();
+    })
+  );
   renderRecommendation();
+  trackEvent("landing_view", { initial_product: chooseProduct().name });
 }
 
 function setNewsletterStatus(message, type = "") {
@@ -171,6 +251,7 @@ if (newsletterForm && leadEmail && leadConsent) {
     const submitButton = newsletterForm.querySelector('button[type="submit"]');
     submitButton.disabled = true;
     setNewsletterStatus("Guardando suscripción...");
+    trackEvent("newsletter_submit_attempt", { product: product.name });
 
     try {
       await saveNewsletterLead({
@@ -178,14 +259,18 @@ if (newsletterForm && leadEmail && leadConsent) {
         name,
         recommended_product: product.name,
         quiz_answers: getQuizAnswers(),
+        campaign_data: getCampaignData(),
         consent: true,
         source: "landing_entire_selector",
-        page_path: window.location.pathname + window.location.hash,
+        page_path: window.location.pathname + window.location.search + window.location.hash,
+        referrer: document.referrer || null,
+        landing_url: window.location.href,
         user_agent: navigator.userAgent
       });
 
       newsletterForm.reset();
       setNewsletterStatus("Listo. Te suscribiste correctamente.", "success");
+      trackEvent("newsletter_signup_success", { product: product.name });
     } catch (error) {
       setNewsletterStatus(
         error.message === "Supabase no está configurado."
@@ -193,8 +278,27 @@ if (newsletterForm && leadEmail && leadConsent) {
           : error.message,
         "error"
       );
+      trackEvent("newsletter_signup_error", { message: error.message });
     } finally {
       submitButton.disabled = false;
     }
   });
 }
+
+landing.querySelectorAll('a[href*="viveentire.com"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("commerce_click", {
+      text: link.textContent.trim(),
+      href: link.href,
+      section: link.closest("section")?.id || link.closest("header, footer, nav")?.className || "unknown"
+    });
+  });
+});
+
+landing.querySelectorAll('a[href="#selector"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("selector_cta_click", {
+      text: link.textContent.trim()
+    });
+  });
+});
