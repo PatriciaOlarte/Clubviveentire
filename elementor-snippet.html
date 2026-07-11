@@ -1368,6 +1368,15 @@ let lastRecommendedProduct = "";
 
 window.dataLayer = window.dataLayer || [];
 
+const metaEventMap = {
+  landing_view: "ViewContent",
+  selector_cta_click: "ViewContent",
+  quiz_started: "CustomizeProduct",
+  quiz_result_changed: "CustomizeProduct",
+  newsletter_signup_success: "Lead",
+  commerce_click: "InitiateCheckout"
+};
+
 function getCampaignData() {
   const params = new URLSearchParams(window.location.search);
   const currentData = {};
@@ -1404,6 +1413,17 @@ function trackEvent(eventName, metadata = {}) {
   if (typeof window.gtag === "function") {
     window.gtag("event", eventName, {
       product: product.name,
+      page_path: eventPayload.page_path,
+      ...metadata,
+      ...eventPayload.campaign_data
+    });
+  }
+
+  if (typeof window.fbq === "function" && metaEventMap[eventName]) {
+    window.fbq("track", metaEventMap[eventName], {
+      content_name: product.name,
+      content_category: "Entire",
+      event_name: eventName,
       page_path: eventPayload.page_path,
       ...metadata,
       ...eventPayload.campaign_data
