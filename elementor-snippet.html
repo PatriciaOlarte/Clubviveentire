@@ -111,21 +111,18 @@ Importante: subir la carpeta assets junto a esta pagina o reemplazar las rutas a
 }
 
 .entire-landing .brand {
-  display: grid;
-  gap: 0;
-  min-width: max-content;
-  font-weight: 900;
-  letter-spacing: 0;
-  line-height: 0.95;
+  display: inline-flex;
+  align-items: center;
+  min-width: 118px;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.entire-landing .brand span {
-  font-size: 28px;
-}
-
-.entire-landing .brand strong {
-  color: #31d9e5;
-  font-size: 16px;
+.entire-landing .brand__logo {
+  width: clamp(118px, 12vw, 154px);
+  height: auto;
 }
 
 .entire-landing .main-nav {
@@ -835,7 +832,16 @@ Importante: subir la carpeta assets junto a esta pagina o reemplazar las rutas a
 
   .entire-landing .site-header {
     position: static;
-    align-items: flex-start;
+    align-items: center;
+  }
+
+  .entire-landing .brand {
+    min-width: 108px;
+    padding: 5px 8px;
+  }
+
+  .entire-landing .brand__logo {
+    width: 108px;
   }
 
   .entire-landing .main-nav,
@@ -934,8 +940,7 @@ Importante: subir la carpeta assets junto a esta pagina o reemplazar las rutas a
 <div class="entire-landing">
 <header class="site-header" aria-label="Navegación principal">
       <a class="brand" href="#" aria-label="Vive Entire inicio">
-        <span>VIVE</span>
-        <strong>ENTIRE®</strong>
+        <img class="brand__logo" src="assets/logo-entire.jpeg" width="935" height="456" alt="Entire" />
       </a>
       <nav class="main-nav" aria-label="Secciones">
         <a href="#productos">Productos</a>
