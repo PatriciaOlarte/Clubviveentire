@@ -1,0 +1,45 @@
+{
+  "projectId": "<reemplazar-con-project-id-de-testsprite>",
+  "type": "frontend",
+  "name": "Vive Entire landing conversion flow",
+  "description": "Verifica que la landing de Vive Entire cargue, muestre productos, recomiende una formula en el quiz y permita captar newsletter.",
+  "priority": "p1",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Abrir la URL publica de la landing."
+    },
+    {
+      "type": "assertion",
+      "description": "Confirmar que el logo original de Entire, el titulo 'Encuentra el Entire ideal para ti' y los botones principales se ven en el primer pantallazo."
+    },
+    {
+      "type": "action",
+      "description": "Hacer clic en 'Descubre cual Entire es para ti' para ir al selector."
+    },
+    {
+      "type": "assertion",
+      "description": "Confirmar que la seccion 'Que Entire es para ti?' muestra las 4 preguntas del quiz."
+    },
+    {
+      "type": "action",
+      "description": "Responder el quiz como adulto mayor de 40 anos, con objetivo de fuerza y movilidad, actividad fisica regular y sin condicion especial de azucar."
+    },
+    {
+      "type": "assertion",
+      "description": "Confirmar que el resultado recomienda Entire Master y muestra una explicacion personalizada con boton de compra."
+    },
+    {
+      "type": "action",
+      "description": "Completar el formulario de newsletter con nombre de prueba, correo de prueba y aceptar el consentimiento."
+    },
+    {
+      "type": "assertion",
+      "description": "Confirmar que aparece un mensaje de exito o confirmacion del envio del formulario."
+    },
+    {
+      "type": "assertion",
+      "description": "En vista movil, confirmar que la barra sticky inferior muestra 'Comprar Entire' y 'Descubrir mi formula' sin tapar el contenido principal."
+    }
+  ]
+}
