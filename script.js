@@ -105,6 +105,15 @@ function trackEvent(eventName, metadata = {}) {
 
   window.dataLayer.push(eventPayload);
 
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, {
+      product: product.name,
+      page_path: eventPayload.page_path,
+      ...metadata,
+      ...eventPayload.campaign_data
+    });
+  }
+
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return;
 
   fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_EVENTS_TABLE}`, {
