@@ -1,0 +1,26 @@
+{
+  "name": "vive-entire-landing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Landing premium de productos Entire con selector, newsletter y snippets para Elementor.",
+  "scripts": {
+    "dev": "node tools/dev-server.mjs",
+    "start": "node tools/dev-server.mjs",
+    "build": "node tools/build-elementor-snippet.mjs",
+    "build:elementor": "node tools/build-elementor-snippet.mjs",
+    "build:hostinger": "node tools/build-hostinger-package.mjs",
+    "check": "node tools/project-check.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "vive-entire",
+    "landing-page",
+    "elementor",
+    "supabase",
+    "newsletter"
+  ],
+  "license": "UNLICENSED"
+}

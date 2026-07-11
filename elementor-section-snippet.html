@@ -1,0 +1,1471 @@
+<!--
+Landing sin header/footer Entire® para WordPress + Elementor.
+Pegar este bloque completo en un widget HTML.
+No incluye header ni footer; recomendado para insertar dentro de una pagina existente de WordPress.
+Importante: subir la carpeta assets junto a esta pagina o reemplazar las rutas assets/... por URLs absolutas del gestor de medios.
+-->
+<script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Cuál producto debo elegir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende de tu edad, objetivo nutricional y condiciones particulares. Usa el selector para recibir una guía inicial."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Desde qué edad puedo consumir Entire® Master?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Entire® Master está pensado para adultos, especialmente después de los 40 años."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Entire® Zero contiene azúcar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Entire® Zero está orientado a adultos que desean controlar el consumo de azúcar."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánta proteína necesito?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La necesidad varía según peso, edad, actividad física y objetivos. La calculadora puede orientarte como primer paso."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Puedo tomar Entire® todos los días?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Puede integrarse a la rutina diaria como complemento nutricional. Si tienes una condición médica, consulta a tu profesional de salud."
+            }
+          }
+        ]
+      }
+    </script>
+<style>
+.entire-landing {
+  --navy: #062858;
+  --navy-2: #021b3d;
+  --turquoise: #05aebd;
+  --turquoise-dark: #008798;
+  --sky: #eafaff;
+  --white: #ffffff;
+  --ink: #102443;
+  --muted: #5e6f86;
+  --line: #d8e8ef;
+  --shadow: 0 18px 50px rgba(6, 40, 88, 0.12);
+  --radius: 8px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.entire-landing,
+
+.entire-landing * {
+  box-sizing: border-box;
+}
+
+.entire-landing {
+  scroll-behavior: smooth;
+}
+
+.entire-landing {
+  margin: 0;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.5;
+}
+
+.entire-landing img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.entire-landing a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.entire-landing .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px clamp(20px, 5vw, 72px);
+  color: var(--white);
+  background: rgba(2, 27, 61, 0.95);
+  backdrop-filter: blur(16px);
+}
+
+.entire-landing .brand {
+  display: grid;
+  gap: 0;
+  min-width: max-content;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 0.95;
+}
+
+.entire-landing .brand span {
+  font-size: 28px;
+}
+
+.entire-landing .brand strong {
+  color: #31d9e5;
+  font-size: 16px;
+}
+
+.entire-landing .main-nav {
+  display: flex;
+  gap: clamp(16px, 3vw, 36px);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.entire-landing .main-nav a,
+
+.entire-landing .site-footer a {
+  opacity: 0.86;
+}
+
+.entire-landing .main-nav a:hover,
+
+.entire-landing .main-nav a:focus-visible,
+
+.entire-landing .site-footer a:hover,
+
+.entire-landing .site-footer a:focus-visible {
+  opacity: 1;
+  color: #69f2ff;
+}
+
+.entire-landing .header-cta,
+
+.entire-landing .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-weight: 800;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.entire-landing .header-cta {
+  color: var(--navy);
+  background: var(--white);
+}
+
+.entire-landing .button--primary {
+  color: var(--white);
+  background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dark));
+  box-shadow: 0 12px 28px rgba(5, 174, 189, 0.25);
+}
+
+.entire-landing .button--secondary {
+  color: var(--turquoise-dark);
+  background: var(--white);
+  border-color: rgba(5, 174, 189, 0.45);
+}
+
+.entire-landing .button--on-dark {
+  color: var(--white);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.entire-landing .button:hover,
+
+.entire-landing .button:focus-visible,
+
+.entire-landing .header-cta:hover,
+
+.entire-landing .header-cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(6, 40, 88, 0.18);
+}
+
+.entire-landing .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: clamp(52px, 8vw, 96px) clamp(20px, 5vw, 72px) 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(234, 250, 255, 0.88), rgba(255, 255, 255, 0.55) 48%, rgba(234, 250, 255, 0.72)),
+    radial-gradient(circle at 78% 18%, rgba(5, 174, 189, 0.12), transparent 34%);
+}
+
+.entire-landing .hero h1,
+
+.entire-landing .section-heading h2,
+
+.entire-landing .selector-card h2,
+
+.entire-landing .calculator-callout h2,
+
+.entire-landing .final-cta h2 {
+  margin: 0;
+  color: var(--navy);
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.entire-landing .hero h1 {
+  max-width: 620px;
+  font-size: clamp(46px, 6vw, 78px);
+}
+
+.entire-landing .hero p {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: #28445f;
+  font-size: clamp(18px, 2vw, 22px);
+}
+
+.entire-landing .button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.entire-landing .hero__media {
+  position: relative;
+  margin: 0;
+}
+
+.entire-landing .hero__media::after {
+  position: absolute;
+  right: 10%;
+  bottom: 8%;
+  left: 10%;
+  height: 18px;
+  content: "";
+  border-radius: 50%;
+  background: rgba(3, 28, 55, 0.13);
+  filter: blur(12px);
+}
+
+.entire-landing .hero__media img {
+  position: relative;
+  z-index: 1;
+  width: min(860px, 100%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-left: auto;
+}
+
+.entire-landing .trust-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  padding: 0 clamp(20px, 5vw, 72px);
+  color: var(--white);
+  background: var(--navy-2);
+}
+
+.entire-landing .trust-strip div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 26px;
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.entire-landing .trust-strip p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.entire-landing .icon {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  color: #6af3ff;
+  font-size: 18px;
+}
+
+.entire-landing .section {
+  padding: clamp(58px, 8vw, 92px) clamp(20px, 5vw, 72px);
+}
+
+.entire-landing .section--soft {
+  background: #f6fbfd;
+}
+
+.entire-landing .section-heading {
+  max-width: 780px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.entire-landing .section-heading h2,
+
+.entire-landing .selector-card h2,
+
+.entire-landing .calculator-callout h2,
+
+.entire-landing .final-cta h2 {
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.entire-landing .section-heading p,
+
+.entire-landing .selector-card p,
+
+.entire-landing .calculator-callout p,
+
+.entire-landing .final-cta p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.entire-landing .product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.entire-landing .product-card {
+  display: grid;
+  justify-items: center;
+  min-height: 382px;
+  padding: 26px 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(6, 40, 88, 0.06);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.entire-landing .product-card:hover,
+
+.entire-landing .product-card:focus-within {
+  transform: translateY(-8px);
+  border-color: rgba(5, 174, 189, 0.5);
+  box-shadow: var(--shadow);
+}
+
+.entire-landing .product-card__image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin-bottom: 20px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  object-position: center top;
+  background: #f3f8fb;
+  box-shadow: inset 0 0 0 1px rgba(6, 40, 88, 0.08);
+}
+
+.entire-landing .product-card h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 22px;
+}
+
+.entire-landing .product-card p {
+  margin: 12px 0 20px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.entire-landing .product-card a,
+
+.entire-landing td a {
+  margin-top: auto;
+  color: var(--turquoise-dark);
+  font-weight: 900;
+}
+
+.entire-landing .table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.entire-landing table  {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+}
+
+.entire-landing th,
+.entire-landing td  {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.entire-landing thead th  {
+  color: var(--white);
+  background: var(--navy);
+  font-size: 14px;
+}
+
+.entire-landing tbody th  {
+  color: var(--navy);
+  font-size: 16px;
+}
+
+.entire-landing td  {
+  color: var(--muted);
+}
+
+.entire-landing tr:last-child th,
+.entire-landing tr:last-child td  {
+  border-bottom: 0;
+}
+
+.entire-landing .selector-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.75fr);
+  gap: 28px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 44px);
+  border: 1px solid rgba(5, 174, 189, 0.28);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdff 100%);
+  box-shadow: var(--shadow);
+}
+
+.entire-landing .quiz {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.entire-landing .quiz label {
+  display: grid;
+  gap: 8px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.entire-landing select  {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background: var(--white);
+  font: inherit;
+}
+
+.entire-landing input  {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background: var(--white);
+  font: inherit;
+}
+
+.entire-landing select:focus-visible,
+.entire-landing input:focus-visible,
+.entire-landing summary:focus-visible,
+.entire-landing a:focus-visible,
+.entire-landing button:focus-visible  {
+  outline: 3px solid rgba(5, 174, 189, 0.45);
+  outline-offset: 3px;
+}
+
+.entire-landing .recommendation {
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.entire-landing .recommendation__label {
+  margin: 0 0 8px;
+  color: var(--turquoise-dark);
+  font-weight: 900;
+}
+
+.entire-landing .recommendation h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(28px, 3vw, 40px);
+}
+
+.entire-landing .recommendation ul {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.entire-landing .recommendation li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--muted);
+}
+
+.entire-landing .recommendation li::before {
+  position: absolute;
+  left: 0;
+  color: var(--turquoise);
+  content: "✓";
+  font-weight: 900;
+}
+
+.entire-landing .recommendation-reason {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid rgba(5, 174, 189, 0.22);
+  border-radius: var(--radius);
+  background: #f0fdff;
+}
+
+.entire-landing .recommendation-reason h4 {
+  margin: 0 0 8px;
+  color: var(--navy);
+  font-size: 16px;
+}
+
+.entire-landing .recommendation-reason p {
+  margin: 0;
+  color: #32506a;
+  font-size: 15px;
+}
+
+.entire-landing .recommendation-next {
+  padding: 14px 0 20px;
+  border-top: 1px solid var(--line);
+}
+
+.entire-landing .recommendation-next p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.entire-landing .recommendation-next strong {
+  display: block;
+  color: var(--navy);
+  line-height: 1.35;
+}
+
+.entire-landing .recommendation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.entire-landing .recommendation-note {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.entire-landing .newsletter-form {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(360px, 1.15fr);
+  gap: 28px;
+  max-width: 1180px;
+  margin: 24px auto 0;
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid rgba(6, 40, 88, 0.12);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 16px 40px rgba(6, 40, 88, 0.08);
+}
+
+.entire-landing .newsletter-form__content h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.1;
+}
+
+.entire-landing .newsletter-form__content p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.entire-landing .newsletter-form__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.entire-landing .newsletter-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.entire-landing .consent-field {
+  grid-column: 1 / -1;
+  display: flex !important;
+  grid-template-columns: none;
+  align-items: flex-start;
+  gap: 10px !important;
+  color: var(--muted) !important;
+  font-weight: 700 !important;
+  line-height: 1.35;
+}
+
+.entire-landing .consent-field input {
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  min-height: 18px;
+  margin-top: 2px;
+  padding: 0;
+  accent-color: var(--turquoise-dark);
+}
+
+.entire-landing .newsletter-form button {
+  width: max-content;
+  min-width: 170px;
+}
+
+.entire-landing .form-status {
+  align-self: center;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.entire-landing .form-status.is-success {
+  color: #087f5b;
+}
+
+.entire-landing .form-status.is-error {
+  color: #b42318;
+}
+
+.entire-landing .calculator-callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 clamp(20px, 5vw, 72px) clamp(42px, 6vw, 72px);
+  padding: clamp(30px, 5vw, 48px);
+  border-radius: var(--radius);
+  color: var(--white);
+  background: linear-gradient(135deg, var(--navy), #073b70);
+}
+
+.entire-landing .calculator-callout h2,
+
+.entire-landing .calculator-callout p {
+  color: var(--white);
+}
+
+.entire-landing .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--line);
+}
+
+.entire-landing .benefits-grid article {
+  display: grid;
+  place-items: center;
+  min-height: 168px;
+  padding: 24px 18px;
+  background: var(--white);
+  text-align: center;
+}
+
+.entire-landing .benefits-grid span {
+  color: var(--turquoise-dark);
+  font-size: 36px;
+}
+
+.entire-landing .benefits-grid h3 {
+  max-width: 180px;
+  margin: 12px 0 0;
+  color: var(--navy);
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.entire-landing .faq-list {
+  display: grid;
+  gap: 10px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.entire-landing details  {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.entire-landing summary  {
+  cursor: pointer;
+  padding: 20px 22px;
+  color: var(--navy);
+  font-weight: 900;
+}
+
+.entire-landing details p  {
+  margin: 0;
+  padding: 0 22px 20px;
+  color: var(--muted);
+}
+
+.entire-landing .final-cta {
+  margin: 0 clamp(20px, 5vw, 72px) 36px;
+  padding: clamp(44px, 7vw, 72px);
+  border-radius: var(--radius);
+  color: var(--white);
+  background:
+    linear-gradient(135deg, rgba(2, 27, 61, 0.96), rgba(6, 40, 88, 0.92)),
+    url("assets/entire-family.png") right center / 46% auto no-repeat;
+}
+
+.entire-landing .final-cta h2,
+
+.entire-landing .final-cta p {
+  max-width: 640px;
+  color: var(--white);
+}
+
+.entire-landing .site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px clamp(20px, 5vw, 72px);
+  color: var(--white);
+  background: var(--navy-2);
+}
+
+.entire-landing .site-footer p {
+  margin: 0;
+  font-weight: 900;
+}
+
+.entire-landing .mobile-sticky-cta {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .entire-landing .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .entire-landing .hero p,
+
+  .entire-landing .hero h1 {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .entire-landing .button-row {
+    justify-content: center;
+  }
+
+  .entire-landing .hero__media img {
+    width: min(860px, 100%);
+    margin: 24px auto 0;
+  }
+
+  .entire-landing .product-grid,
+
+  .entire-landing .benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .entire-landing .selector-card {
+    grid-template-columns: 1fr;
+  }
+
+  .entire-landing .newsletter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .entire-landing .trust-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .entire-landing {
+    padding-bottom: 92px;
+  }
+
+  .entire-landing .site-header {
+    position: static;
+    align-items: flex-start;
+  }
+
+  .entire-landing .main-nav,
+
+  .entire-landing .header-cta {
+    display: none;
+  }
+
+  .entire-landing .hero {
+    padding-top: 42px;
+  }
+
+  .entire-landing .hero h1 {
+    font-size: 42px;
+  }
+
+  .entire-landing .hero p {
+    font-size: 17px;
+  }
+
+  .entire-landing .trust-strip,
+
+  .entire-landing .product-grid,
+
+  .entire-landing .benefits-grid,
+
+  .entire-landing .quiz,
+
+  .entire-landing .newsletter-form__fields {
+    grid-template-columns: 1fr;
+  }
+
+  .entire-landing .trust-strip div {
+    border-left: 0;
+  }
+
+  .entire-landing .calculator-callout,
+
+  .entire-landing .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .entire-landing .final-cta {
+    background: linear-gradient(135deg, rgba(2, 27, 61, 0.96), rgba(6, 40, 88, 0.92));
+  }
+
+  .entire-landing .button {
+    width: 100%;
+  }
+
+  .entire-landing .recommendation-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .entire-landing .newsletter-form button {
+    width: 100%;
+  }
+
+  .entire-landing .mobile-sticky-cta {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(216, 232, 239, 0.9);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 -14px 30px rgba(6, 40, 88, 0.12);
+    backdrop-filter: blur(12px);
+  }
+
+  .entire-landing .mobile-sticky-cta .button {
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 13px;
+    line-height: 1.15;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entire-landing *,
+  .entire-landing *::before,
+  .entire-landing *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+</style>
+<div class="entire-landing">
+
+<main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__content">
+          <h1 id="hero-title">Encuentra el Entire® ideal para ti</h1>
+          <p>
+            La nutrición adecuada cambia según la edad, el estilo de vida y tus objetivos. Descubre cuál fórmula Entire®
+            puede acompañarte mejor.
+          </p>
+          <div class="button-row" aria-label="Acciones principales">
+            <a class="button button--primary" href="https://viveentire.com/tienda/">Comprar Ahora</a>
+            <a class="button button--secondary" href="#selector">Descubre cual Entire® es para ti</a>
+          </div>
+        </div>
+        <figure class="hero__media">
+          <img
+            src="assets/entire-family.png"
+            width="1536"
+            height="1024"
+            alt="Familia de productos Entire: Master, Full, Zero, Proteína y Kido"
+          />
+        </figure>
+      </section>
+
+      <section class="trust-strip" aria-label="Garantías Vive Entire">
+        <div>
+          <span class="icon" aria-hidden="true">✦</span>
+          <p>Nutrición completa y balanceada</p>
+        </div>
+        <div>
+          <span class="icon" aria-hidden="true">✓</span>
+          <p>Producto original garantizado</p>
+        </div>
+        <div>
+          <span class="icon" aria-hidden="true">⌁</span>
+          <p>Ingredientes seleccionados</p>
+        </div>
+        <div>
+          <span class="icon" aria-hidden="true">→</span>
+          <p>Para cada etapa de la vida</p>
+        </div>
+      </section>
+
+      <section class="section" id="productos" aria-labelledby="products-title">
+        <div class="section-heading">
+          <h2 id="products-title">Una solución para cada etapa de la vida</h2>
+          <p>Elige una fórmula según tu momento, objetivo nutricional y rutina diaria.</p>
+        </div>
+        <div class="product-grid">
+          <article class="product-card product-card--master">
+            <img
+              class="product-card__image"
+              src="assets/product-master.webp"
+              loading="lazy"
+              decoding="async"
+              alt="Imagen oficial de Entire Master"
+            />
+            <h3>Entire® Master</h3>
+            <p>Ideal después de los 40 años. Apoya fuerza, movilidad y masa muscular.</p>
+            <a href="https://viveentire.com/entire-master-suplemento-nutricional-para-adulto-mayor/">Ver más</a>
+          </article>
+          <article class="product-card product-card--full">
+            <img
+              class="product-card__image"
+              src="assets/product-full.webp"
+              loading="lazy"
+              decoding="async"
+              alt="Imagen oficial de Entire Full"
+            />
+            <h3>Entire® Full</h3>
+            <p>Nutrición completa para el día a día con vitaminas, minerales y proteína.</p>
+            <a href="https://viveentire.com/entire-full-suplemento-nutricional-completo/">Ver más</a>
+          </article>
+          <article class="product-card product-card--zero">
+            <img
+              class="product-card__image"
+              src="assets/product-zero.webp"
+              loading="lazy"
+              decoding="async"
+              alt="Imagen oficial de Entire Zero"
+            />
+            <h3>Entire® Zero</h3>
+            <p>Para adultos que desean controlar el consumo de azúcar. Alta proteína y rico en fibra.</p>
+            <a href="https://viveentire.com/entire-zero-suplemento-nutricional-sin-azucar/">Ver más</a>
+          </article>
+          <article class="product-card product-card--protein">
+            <img
+              class="product-card__image"
+              src="assets/product-proteina.webp"
+              loading="lazy"
+              decoding="async"
+              alt="Imagen oficial de Entire Proteína"
+            />
+            <h3>Entire® Proteína</h3>
+            <p>Para complementar requerimientos elevados de proteína. 23 g de proteína por porción.</p>
+            <a href="https://viveentire.com/entire-proteina-suplemento-nutricional-alto-en-proteina/">Ver más</a>
+          </article>
+          <article class="product-card product-card--kido">
+            <img
+              class="product-card__image"
+              src="assets/product-kido.webp"
+              loading="lazy"
+              decoding="async"
+              alt="Imagen oficial de Entire Kido"
+            />
+            <h3>Entire® Kido</h3>
+            <p>Nutrición para niños en crecimiento con proteína, hierro, calcio y zinc.</p>
+            <a href="https://viveentire.com/producto/entire-kido-complemento-nutricional-para-ninos/">Ver más</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--soft" id="comparar" aria-labelledby="compare-title">
+        <div class="section-heading">
+          <h2 id="compare-title">Compara las fórmulas</h2>
+          <p>Una vista rápida para encontrar la opción que mejor se ajusta a tu necesidad.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Ideal para</th>
+                <th>Proteína</th>
+                <th>Fibra</th>
+                <th>Vitaminas</th>
+                <th>Diferencial</th>
+                <th>Ver más</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Entire® Master</th>
+                <td>Adultos +40</td>
+                <td>Alta</td>
+                <td>Media</td>
+                <td>Complejo completo</td>
+                <td>Fuerza, movilidad y masa muscular</td>
+                <td><a href="https://viveentire.com/entire-master-suplemento-nutricional-para-adulto-mayor/">Ver más</a></td>
+              </tr>
+              <tr>
+                <th>Entire® Full</th>
+                <td>Uso diario</td>
+                <td>Balanceada</td>
+                <td>Media</td>
+                <td>Vitaminas y minerales</td>
+                <td>Nutrición completa para rutina diaria</td>
+                <td><a href="https://viveentire.com/entire-full-suplemento-nutricional-completo/">Ver más</a></td>
+              </tr>
+              <tr>
+                <th>Entire® Zero</th>
+                <td>Control de azúcar</td>
+                <td>Alta</td>
+                <td>Alta</td>
+                <td>Vitaminas y minerales</td>
+                <td>Sin azúcar añadida</td>
+                <td><a href="https://viveentire.com/entire-zero-suplemento-nutricional-sin-azucar/">Ver más</a></td>
+              </tr>
+              <tr>
+                <th>Entire® Proteína</th>
+                <td>Mayor requerimiento proteico</td>
+                <td>23 g</td>
+                <td>Baja</td>
+                <td>Soporte nutricional</td>
+                <td>Alto aporte de proteína por porción</td>
+                <td><a href="https://viveentire.com/entire-proteina-suplemento-nutricional-alto-en-proteina/">Ver más</a></td>
+              </tr>
+              <tr>
+                <th>Entire® Kido</th>
+                <td>Niños en crecimiento</td>
+                <td>Infantil</td>
+                <td>Media</td>
+                <td>Hierro, calcio y zinc</td>
+                <td>Apoyo nutricional para crecimiento</td>
+                <td><a href="https://viveentire.com/producto/entire-kido-complemento-nutricional-para-ninos/">Ver más</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section selector-section" id="selector" aria-labelledby="selector-title">
+        <div class="selector-card">
+          <div>
+            <h2 id="selector-title">¿Qué Entire® es para ti?</h2>
+            <p>Responde 4 preguntas y recibe una recomendación inmediata según tu etapa y objetivo.</p>
+            <form class="quiz" aria-label="Selector de producto Entire">
+              <label>
+                <span>1. ¿Qué edad tienes?</span>
+                <select id="age">
+                  <option value="adult">18 a 39 años</option>
+                  <option value="master">40 años o más</option>
+                  <option value="kido">Menor de 18 años</option>
+                </select>
+              </label>
+              <label>
+                <span>2. ¿Cuál es tu objetivo?</span>
+                <select id="goal">
+                  <option value="full">Nutrición diaria completa</option>
+                  <option value="protein">Aumentar proteína</option>
+                  <option value="master">Fuerza y movilidad</option>
+                  <option value="kido">Crecimiento infantil</option>
+                </select>
+              </label>
+              <label>
+                <span>3. ¿Realizas actividad física?</span>
+                <select id="activity">
+                  <option value="moderate">Actividad moderada</option>
+                  <option value="high">Actividad frecuente</option>
+                  <option value="low">Poca actividad</option>
+                </select>
+              </label>
+              <label>
+                <span>4. ¿Tienes alguna condición especial?</span>
+                <select id="condition">
+                  <option value="none">Ninguna en especial</option>
+                  <option value="sugar">Quiero controlar el azúcar</option>
+                  <option value="protein">Necesito más proteína</option>
+                </select>
+              </label>
+            </form>
+          </div>
+          <aside class="recommendation" aria-live="polite" aria-label="Recomendación de producto">
+            <p class="recommendation__label">Tu recomendación</p>
+            <h3 id="result-name">Entire® Full</h3>
+            <p id="result-copy">
+              Una fórmula completa para complementar la alimentación diaria con proteína, vitaminas y minerales.
+            </p>
+            <div class="recommendation-reason">
+              <h4>Por qué es ideal para ti</h4>
+              <p id="result-reason">Es una opción versátil cuando buscas complementar tu alimentación diaria sin una necesidad específica como control de azúcar o proteína elevada.</p>
+            </div>
+            <ul id="result-list">
+              <li>Nutrición completa para el día a día</li>
+              <li>Práctico para rutinas activas</li>
+              <li>Apoyo nutricional balanceado</li>
+            </ul>
+            <div class="recommendation-next">
+              <p id="result-best-for">Ideal para mantener una rutina nutricional más completa todos los días.</p>
+              <strong id="result-action">Empieza con Entire® Full y revisa cómo se adapta a tu rutina diaria.</strong>
+            </div>
+            <div class="recommendation-actions">
+              <a id="result-link" class="button button--primary" href="https://viveentire.com/entire-full-suplemento-nutricional-completo/">Comprar Ahora</a>
+              <a class="button button--secondary" href="#newsletter-form">Recibir recomendación</a>
+            </div>
+            <p class="recommendation-note">Puedes guardar tu resultado y recibir novedades del Club Vive Entire® en tu correo.</p>
+          </aside>
+        </div>
+        <form class="newsletter-form" id="newsletter-form" aria-labelledby="newsletter-title">
+          <div class="newsletter-form__content">
+            <h3 id="newsletter-title">Recibe tu recomendación y novedades de Entire®</h3>
+            <p>Déjanos tu correo para enviarte contenido nutricional, beneficios del Club Vive Entire® y novedades de productos.</p>
+          </div>
+          <div class="newsletter-form__fields">
+            <label>
+              <span>Nombre</span>
+              <input id="lead-name" name="name" type="text" autocomplete="name" placeholder="Tu nombre" />
+            </label>
+            <label>
+              <span>Correo electrónico</span>
+              <input id="lead-email" name="email" type="email" autocomplete="email" placeholder="correo@ejemplo.com" required />
+            </label>
+            <label class="consent-field">
+              <input id="lead-consent" name="consent" type="checkbox" required />
+              <span>Acepto recibir comunicaciones de Vive Entire® y el tratamiento de mis datos personales.</span>
+            </label>
+            <button class="button button--primary" type="submit">Suscribirme</button>
+            <p class="form-status" id="newsletter-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </section>
+
+      <section class="section calculator-callout" aria-labelledby="calculator-title">
+        <div>
+          <h2 id="calculator-title">¿No sabes cuál elegir?</h2>
+          <p>Utiliza nuestras calculadoras gratuitas y encuentra la mejor opción para ti.</p>
+        </div>
+        <a class="button button--secondary" href="#selector">Ir a la Calculadora</a>
+      </section>
+
+      <section class="section" id="beneficios" aria-labelledby="benefits-title">
+        <div class="section-heading">
+          <h2 id="benefits-title">Beneficios de Entire®</h2>
+        </div>
+        <div class="benefits-grid">
+          <article><span aria-hidden="true">⚡</span><h3>Proteína de alta calidad</h3></article>
+          <article><span aria-hidden="true">✚</span><h3>Vitaminas y minerales</h3></article>
+          <article><span aria-hidden="true">◌</span><h3>Nutrición inteligente</h3></article>
+          <article><span aria-hidden="true">↗</span><h3>Apoya fuerza y movilidad</h3></article>
+          <article><span aria-hidden="true">♡</span><h3>Para toda la familia</h3></article>
+        </div>
+      </section>
+
+      <section class="section section--soft" id="faq" aria-labelledby="faq-title">
+        <div class="section-heading">
+          <h2 id="faq-title">Preguntas frecuentes</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>¿Cuál producto debo elegir?</summary>
+            <p>Depende de tu edad, objetivo nutricional y condiciones particulares. Usa el selector para recibir una guía inicial.</p>
+          </details>
+          <details>
+            <summary>¿Desde qué edad puedo consumir Entire® Master?</summary>
+            <p>Entire® Master está pensado para adultos, especialmente después de los 40 años.</p>
+          </details>
+          <details>
+            <summary>¿Entire® Zero contiene azúcar?</summary>
+            <p>Entire® Zero está orientado a adultos que desean controlar el consumo de azúcar.</p>
+          </details>
+          <details>
+            <summary>¿Cuánta proteína necesito?</summary>
+            <p>La necesidad varía según peso, edad, actividad física y objetivos. La calculadora puede orientarte como primer paso.</p>
+          </details>
+          <details>
+            <summary>¿Puedo tomar Entire® todos los días?</summary>
+            <p>Puede integrarse a la rutina diaria como complemento nutricional. Si tienes una condición médica, consulta a tu profesional de salud.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="final-title">
+        <h2 id="final-title">Empieza hoy a cuidar tu bienestar.</h2>
+        <p>Descubre cuál fórmula Entire® es ideal para ti y comienza una mejor nutrición.</p>
+        <div class="button-row">
+          <a class="button button--primary" href="https://viveentire.com/tienda/">Comprar Entire®</a>
+          <a class="button button--secondary button--on-dark" href="#selector">Descubre cual Entire® es para ti</a>
+        </div>
+      </section>
+    </main>
+
+</div>
+<script>
+(() => {
+const SUPABASE_URL = "https://njaqzgmdevbjrultlqci.supabase.co";
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qYXF6Z21kZXZianJ1bHRscWNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM3MTczMDAsImV4cCI6MjA5OTI5MzMwMH0.TArE1M9rYdJDRWtOfJAmWyW_6TKC_9kcjPO08x6_gBc";
+const SUPABASE_LEADS_TABLE = "entire_newsletter_leads";
+
+const products = {
+  full: {
+    name: "Entire® Full",
+    copy: "Una fórmula completa para complementar la alimentación diaria con proteína, vitaminas y minerales.",
+    bullets: ["Nutrición completa para el día a día", "Práctico para rutinas activas", "Apoyo nutricional balanceado"],
+    reason: "Es una opción versátil cuando buscas complementar tu alimentación diaria sin una necesidad específica como control de azúcar o proteína elevada.",
+    bestFor: "Ideal para mantener una rutina nutricional más completa todos los días.",
+    action: "Empieza con Entire® Full y revisa cómo se adapta a tu rutina diaria.",
+    url: "https://viveentire.com/entire-full-suplemento-nutricional-completo/"
+  },
+  master: {
+    name: "Entire® Master",
+    copy: "Pensado para adultos después de los 40 años que buscan apoyar fuerza, movilidad y masa muscular.",
+    bullets: ["Ideal para mayores de 40 años", "Apoya fuerza y movilidad", "Enfoque en masa muscular"],
+    reason: "Tus respuestas indican una etapa en la que conviene priorizar fuerza, movilidad y soporte muscular.",
+    bestFor: "Ideal si quieres cuidar vitalidad y bienestar después de los 40.",
+    action: "Elige Entire® Master como apoyo nutricional para tu etapa actual.",
+    url: "https://viveentire.com/entire-master-suplemento-nutricional-para-adulto-mayor/"
+  },
+  zero: {
+    name: "Entire® Zero",
+    copy: "Una opción para adultos que desean controlar el consumo de azúcar sin dejar de priorizar proteína y fibra.",
+    bullets: ["Control del consumo de azúcar", "Alta proteína", "Rico en fibra"],
+    reason: "Marcaste control del azúcar como prioridad, por eso la recomendación se enfoca en una fórmula sin azúcar añadida.",
+    bestFor: "Ideal si buscas proteína, fibra y una alternativa pensada para controlar el consumo de azúcar.",
+    action: "Revisa Entire® Zero y confirma si se ajusta a tus hábitos diarios.",
+    url: "https://viveentire.com/entire-zero-suplemento-nutricional-sin-azucar/"
+  },
+  protein: {
+    name: "Entire® Proteína",
+    copy: "Recomendado cuando tu objetivo principal es complementar requerimientos elevados de proteína.",
+    bullets: ["23 g de proteína por porción", "Ideal para actividad física frecuente", "Complementa requerimientos elevados"],
+    reason: "Tus respuestas muestran un objetivo de mayor aporte proteico o una rutina con más demanda física.",
+    bestFor: "Ideal para complementar proteína cuando entrenas, eres activo o tienes requerimientos elevados.",
+    action: "Empieza por Entire® Proteína si tu prioridad es aumentar el aporte proteico.",
+    url: "https://viveentire.com/entire-proteina-suplemento-nutricional-alto-en-proteina/"
+  },
+  kido: {
+    name: "Entire® Kido",
+    copy: "Una fórmula orientada a niños en crecimiento, con proteína, hierro, calcio y zinc.",
+    bullets: ["Nutrición para niños", "Apoya crecimiento", "Con proteína, hierro, calcio y zinc"],
+    reason: "Tus respuestas apuntan a una necesidad nutricional infantil, por eso la recomendación prioriza crecimiento y micronutrientes clave.",
+    bestFor: "Ideal para niños en crecimiento que necesitan apoyo nutricional práctico.",
+    action: "Conoce Entire® Kido y revisa si se ajusta a la rutina del niño.",
+    url: "https://viveentire.com/producto/entire-kido-complemento-nutricional-para-ninos/"
+  }
+};
+
+const landing = document.querySelector(".entire-landing") || document;
+const controls = ["age", "goal", "activity", "condition"].map((id) => landing.querySelector(`#${id}`));
+const resultName = landing.querySelector("#result-name");
+const resultCopy = landing.querySelector("#result-copy");
+const resultList = landing.querySelector("#result-list");
+const resultLink = landing.querySelector("#result-link");
+const resultReason = landing.querySelector("#result-reason");
+const resultBestFor = landing.querySelector("#result-best-for");
+const resultAction = landing.querySelector("#result-action");
+const newsletterForm = landing.querySelector("#newsletter-form");
+const newsletterStatus = landing.querySelector("#newsletter-status");
+const leadName = landing.querySelector("#lead-name");
+const leadEmail = landing.querySelector("#lead-email");
+const leadConsent = landing.querySelector("#lead-consent");
+
+function chooseProduct() {
+  const [age, goal, activity, condition] = controls.map((control) => control.value);
+
+  if (age === "kido" || goal === "kido") return products.kido;
+  if (condition === "sugar") return products.zero;
+  if (age === "master" || goal === "master") return products.master;
+  if (goal === "protein" || activity === "high" || condition === "protein") return products.protein;
+  return products.full;
+}
+
+function renderRecommendation() {
+  const product = chooseProduct();
+  resultName.textContent = product.name;
+  resultCopy.textContent = product.copy;
+  resultLink.href = product.url;
+  if (resultReason) resultReason.textContent = product.reason;
+  if (resultBestFor) resultBestFor.textContent = product.bestFor;
+  if (resultAction) resultAction.textContent = product.action;
+  resultList.replaceChildren(
+    ...product.bullets.map((bullet) => {
+      const item = document.createElement("li");
+      item.textContent = bullet;
+      return item;
+    })
+  );
+}
+
+if (controls.every(Boolean) && resultName && resultCopy && resultList && resultLink) {
+  controls.forEach((control) => control.addEventListener("change", renderRecommendation));
+  renderRecommendation();
+}
+
+function setNewsletterStatus(message, type = "") {
+  if (!newsletterStatus) return;
+  newsletterStatus.textContent = message;
+  newsletterStatus.className = `form-status${type ? ` is-${type}` : ""}`;
+}
+
+function getQuizAnswers() {
+  const labels = {
+    age: "Edad",
+    goal: "Objetivo",
+    activity: "Actividad física",
+    condition: "Condición especial"
+  };
+
+  return Object.fromEntries(
+    controls.filter(Boolean).map((control) => [
+      control.id,
+      {
+        label: labels[control.id],
+        value: control.value,
+        text: control.options[control.selectedIndex]?.text || control.value
+      }
+    ])
+  );
+}
+
+async function saveNewsletterLead(payload) {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+    throw new Error("Supabase no está configurado.");
+  }
+
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_LEADS_TABLE}`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (!response.ok) {
+    if (response.status === 409) {
+      throw new Error("Este correo ya está suscrito.");
+    }
+    throw new Error("No pudimos guardar tu suscripción en este momento.");
+  }
+}
+
+if (newsletterForm && leadEmail && leadConsent) {
+  newsletterForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const product = chooseProduct();
+    const email = leadEmail.value.trim().toLowerCase();
+    const name = leadName?.value.trim() || null;
+
+    if (!email || !leadEmail.checkValidity()) {
+      setNewsletterStatus("Escribe un correo válido.", "error");
+      leadEmail.focus();
+      return;
+    }
+
+    if (!leadConsent.checked) {
+      setNewsletterStatus("Debes aceptar el tratamiento de datos para suscribirte.", "error");
+      leadConsent.focus();
+      return;
+    }
+
+    const submitButton = newsletterForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    setNewsletterStatus("Guardando suscripción...");
+
+    try {
+      await saveNewsletterLead({
+        email,
+        name,
+        recommended_product: product.name,
+        quiz_answers: getQuizAnswers(),
+        consent: true,
+        source: "landing_entire_selector",
+        page_path: window.location.pathname + window.location.hash,
+        user_agent: navigator.userAgent
+      });
+
+      newsletterForm.reset();
+      setNewsletterStatus("Listo. Te suscribiste correctamente.", "success");
+    } catch (error) {
+      setNewsletterStatus(
+        error.message === "Supabase no está configurado."
+          ? "Formulario listo. Falta conectar Supabase para guardar correos."
+          : error.message,
+        "error"
+      );
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}
+
+})();
+</script>
