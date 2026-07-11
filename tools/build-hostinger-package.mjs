@@ -21,13 +21,23 @@ await writeFile(
   path.join(outDir, ".htaccess"),
   `Options -Indexes
 
+<IfModule mod_headers.c>
+  <FilesMatch "^(index\\.html)?$">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
 </IfModule>
 
 <IfModule mod_expires.c>
   ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
   ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
   ExpiresByType image/webp "access plus 1 month"
   ExpiresByType text/css "access plus 7 days"
   ExpiresByType application/javascript "access plus 7 days"
@@ -40,4 +50,3 @@ await execFileAsync("zip", ["-r", "../dist/club-vive-entire-hostinger.zip", "."]
 });
 
 console.log(`Paquete Hostinger creado: ${zipPath}`);
-
