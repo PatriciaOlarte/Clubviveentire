@@ -21,6 +21,11 @@ await writeFile(
   path.join(outDir, ".htaccess"),
   `Options -Indexes
 
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^selector/?$ /?utm_source=instagram&utm_medium=bio&utm_campaign=entire_selector#selector [R=302,L,NE]
+</IfModule>
+
 <IfModule mod_headers.c>
   <FilesMatch "^(index\\.html)?$">
     Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"

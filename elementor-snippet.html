@@ -8,6 +8,7 @@ Importante: subir la carpeta assets junto a esta pagina o reemplazar las rutas a
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        "url": "https://landing.entirenutricion.net/",
         "mainEntity": [
           {
             "@type": "Question",
@@ -184,6 +185,20 @@ Importante: subir la carpeta assets junto a esta pagina o reemplazar las rutas a
   color: var(--white);
   background: transparent;
   border-color: rgba(255, 255, 255, 0.45);
+}
+
+.entire-landing .button--whatsapp {
+  border: 1px solid #128c7e;
+  color: var(--white);
+  background: #128c7e;
+  box-shadow: 0 16px 32px rgba(18, 140, 126, 0.24);
+}
+
+.entire-landing .button--whatsapp:hover,
+
+.entire-landing .button--whatsapp:focus-visible {
+  color: var(--white);
+  background: #0f7c70;
 }
 
 .entire-landing .button:hover,
@@ -1284,6 +1299,12 @@ Importante: subir la carpeta assets junto a esta pagina o reemplazar las rutas a
         <div class="button-row">
           <a class="button button--primary" href="https://viveentire.com/tienda/">Comprar Entire®</a>
           <a class="button button--secondary button--on-dark" href="#selector">Descubre cual Entire® es para ti</a>
+          <a
+            class="button button--whatsapp"
+            href="https://wa.me/573102723506?text=Hola%2C%20quiero%20asesor%C3%ADa%20para%20elegir%20mi%20Entire%C2%AE."
+            target="_blank"
+            rel="noopener"
+          >Asesoría por WhatsApp</a>
         </div>
       </section>
     </main>
@@ -1374,7 +1395,8 @@ const metaEventMap = {
   quiz_started: "CustomizeProduct",
   quiz_result_changed: "CustomizeProduct",
   newsletter_signup_success: "Lead",
-  commerce_click: "InitiateCheckout"
+  commerce_click: "InitiateCheckout",
+  whatsapp_click: "Contact"
 };
 
 function getCampaignData() {
@@ -1624,6 +1646,16 @@ landing.querySelectorAll('a[href="#selector"]').forEach((link) => {
   link.addEventListener("click", () => {
     trackEvent("selector_cta_click", {
       text: link.textContent.trim()
+    });
+  });
+});
+
+landing.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("whatsapp_click", {
+      text: link.textContent.trim(),
+      href: link.href,
+      section: link.closest("section")?.id || link.closest("header, footer, nav")?.className || "unknown"
     });
   });
 });
