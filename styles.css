@@ -124,6 +124,19 @@ a {
   border-color: rgba(255, 255, 255, 0.45);
 }
 
+.button--whatsapp {
+  border: 1px solid #128c7e;
+  color: var(--white);
+  background: #128c7e;
+  box-shadow: 0 16px 32px rgba(18, 140, 126, 0.24);
+}
+
+.button--whatsapp:hover,
+.button--whatsapp:focus-visible {
+  color: var(--white);
+  background: #0f7c70;
+}
+
 .button:hover,
 .button:focus-visible,
 .header-cta:hover,

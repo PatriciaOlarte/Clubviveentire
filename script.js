@@ -78,7 +78,8 @@ const metaEventMap = {
   quiz_started: "CustomizeProduct",
   quiz_result_changed: "CustomizeProduct",
   newsletter_signup_success: "Lead",
-  commerce_click: "InitiateCheckout"
+  commerce_click: "InitiateCheckout",
+  whatsapp_click: "Contact"
 };
 
 function getCampaignData() {
@@ -328,6 +329,16 @@ landing.querySelectorAll('a[href="#selector"]').forEach((link) => {
   link.addEventListener("click", () => {
     trackEvent("selector_cta_click", {
       text: link.textContent.trim()
+    });
+  });
+});
+
+landing.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("whatsapp_click", {
+      text: link.textContent.trim(),
+      href: link.href,
+      section: link.closest("section")?.id || link.closest("header, footer, nav")?.className || "unknown"
     });
   });
 });
