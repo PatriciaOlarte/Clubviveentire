@@ -127,7 +127,7 @@ Cierre:
 
 Agregar la landing como primer enlace visible en bio o en el link principal:
 
-https://landing.entirenutricion.net/?utm_source=instagram&utm_medium=bio&utm_campaign=entire_selector
+https://landing.entirenutricion.net/selector
 
 Texto sugerido para bio:
 
@@ -137,4 +137,4 @@ Calculadoras gratuitas y guias practicas
 
 Link principal:
 
-https://landing.entirenutricion.net/?utm_source=instagram&utm_medium=bio&utm_campaign=entire_selector
+https://landing.entirenutricion.net/selector

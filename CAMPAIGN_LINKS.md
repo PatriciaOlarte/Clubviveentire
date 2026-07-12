@@ -8,7 +8,7 @@ https://landing.entirenutricion.net/
 
 | Canal | Uso recomendado | Enlace |
 | --- | --- | --- |
-| Instagram Bio | Link fijo del perfil | https://landing.entirenutricion.net/?utm_source=instagram&utm_medium=bio&utm_campaign=entire_selector |
+| Instagram Bio | Link fijo del perfil | https://landing.entirenutricion.net/selector |
 | Instagram Stories | Historias con sticker de enlace | https://landing.entirenutricion.net/?utm_source=instagram&utm_medium=stories&utm_campaign=entire_selector |
 | Instagram Reels | Texto/link de campana desde reels | https://landing.entirenutricion.net/?utm_source=instagram&utm_medium=reels&utm_campaign=entire_selector |
 | Facebook orgánico | Posts de la pagina | https://landing.entirenutricion.net/?utm_source=facebook&utm_medium=organic&utm_campaign=entire_selector |
