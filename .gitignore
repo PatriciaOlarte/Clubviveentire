@@ -18,6 +18,8 @@ hostinger-upload/
 .tmp/
 tmp/
 *.log
+.claude/
+.testsprite/
 
 assets/desktop-check.png
 assets/mobile-check.png

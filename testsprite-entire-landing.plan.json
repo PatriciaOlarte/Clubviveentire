@@ -1,5 +1,5 @@
 {
-  "projectId": "<reemplazar-con-project-id-de-testsprite>",
+  "projectId": "abd7dba6-0dad-49fe-ae20-5b77e090e132",
   "type": "frontend",
   "name": "Vive Entire landing conversion flow",
   "description": "Verifica que la landing de Vive Entire cargue, muestre productos, recomiende una formula en el quiz y permita captar newsletter.",
